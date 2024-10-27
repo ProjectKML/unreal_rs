@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 ue5 = { path = "../ue5" }
+log = "0.4.22"
 
 [lib]
 crate-type = ["cdylib"]

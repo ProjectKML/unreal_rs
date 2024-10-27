@@ -1,5 +1,5 @@
 #include "Ue5RustPlugin.h"
-#include "Bindings.h"
+#include "BindingsImpl.h"
 
 #define LOCTEXT_NAMESPACE "FUe5RustPluginModule"
 
@@ -26,8 +26,11 @@ bool FPlugin::TryLoad()
 		return false;
 	}
 
-	UnrealBindings UnrealBindings;
+	UnrealBindings UnrealBindings = {};
+	UnrealBindings.log = BindingsImpl::Log;
 	RustBindings RustBindings;
+
+	UE_LOG(LogTemp, Warning, TEXT("Starting register"));
 
 	const auto Result = RegisterModule(&UnrealBindings, &RustBindings);
 	if (Result != 0)

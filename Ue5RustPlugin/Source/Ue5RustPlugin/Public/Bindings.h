@@ -4,12 +4,14 @@
 #include <ostream>
 #include <new>
 
-struct UnrealBindings {
+using PFN_Log = void(*)(const char*, uintptr_t);
 
+struct UnrealBindings {
+  PFN_Log log;
 };
 
 struct RustBindings {
 
 };
 
-using PFN_RegisterModule = int32_t(*)(UnrealBindings*, RustBindings*);
+using PFN_RegisterModule = uint32_t(*)(const UnrealBindings*, RustBindings*);
