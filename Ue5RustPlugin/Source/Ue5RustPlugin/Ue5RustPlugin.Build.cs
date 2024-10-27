@@ -1,3 +1,5 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
 using UnrealBuildTool;
 
 public class Ue5RustPlugin : ModuleRules
@@ -7,16 +9,15 @@ public class Ue5RustPlugin : ModuleRules
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
 		PublicIncludePaths.AddRange(new string[] {});
-				
+		
 		PrivateIncludePaths.AddRange(new string[] {});
-			
+		
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core", "GraphEditor",
+				"Core",
 			}
 		);
-			
 		
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
@@ -40,7 +41,6 @@ public class Ue5RustPlugin : ModuleRules
 				"EditorStyle",
 			}
 		);
-		
 		
 		DynamicallyLoadedModuleNames.AddRange(new string[] {});
 	}

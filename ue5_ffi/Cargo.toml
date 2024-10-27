@@ -1,7 +1,9 @@
 [package]
-name = "ue5"
+name = "ue5_ffi"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ue5_ffi = { path = "../ue5_ffi" }
+
+[build-dependencies]
+cbindgen = "0.27.0"
