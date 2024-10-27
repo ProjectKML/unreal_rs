@@ -1,4 +1,5 @@
 #include "Ue5RustPlugin.h"
+#include "Bindings.h"
 
 #define LOCTEXT_NAMESPACE "FUe5RustPluginModule"
 
@@ -18,22 +19,22 @@ bool FPlugin::TryLoad()
 		return false;
 	}
 
-	auto* RegisterModule = static_cast<PFN_register_module>(FPlatformProcess::GetDllExport(LocalHandle, TEXT("ue5_register_module")));
+	auto* RegisterModule = static_cast<PFN_RegisterModule>(FPlatformProcess::GetDllExport(LocalHandle, TEXT("ue5_register_module")));
 	if (RegisterModule == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Failed to load entry point"));
 		return false;
 	}
 
-	/*FUnrealBindings UnrealBindings;
-	FRustBindings RustBindings;
+	UnrealBindings UnrealBindings;
+	RustBindings RustBindings;
 
 	const auto Result = RegisterModule(&UnrealBindings, &RustBindings);
 	if (Result != 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Register rust module failed: %d"), Result);
 		return false;
-	}*/
+	}
 
 	return true;
 }

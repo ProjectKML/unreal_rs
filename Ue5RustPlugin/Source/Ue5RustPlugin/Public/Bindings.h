@@ -11,3 +11,5 @@ struct UnrealBindings {
 struct RustBindings {
 
 };
+
+using PFN_RegisterModule = int32_t(*)(UnrealBindings*, RustBindings*);
