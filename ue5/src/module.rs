@@ -19,7 +19,8 @@ pub trait Module {
 #[macro_export]
 macro_rules! implement_unreal_module {
     ($module: ty) => {
-        pub unsafe extern "C" fn register_module(
+        #[no_mangle]
+        pub unsafe extern "C" fn ue5_register_module(
             unreal_bindings: *const $crate::ffi::UnrealBindings,
             rust_bindings: *const $crate::ffi::RustBindings,
         ) -> u32 {
