@@ -1,5 +1,5 @@
 .idea/
 Cargo.lock
 target/
-Ue5RustPlugin/Binaries
-Ue5RustPlugin/Intermediate
+RustPlugin/Binaries
+RustPlugin/Intermediate
