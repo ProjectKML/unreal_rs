@@ -1,4 +1,6 @@
 [workspace]
 members = [
-	"unreal"
-, "unreal_example"]
+    "crates/unreal",
+    "crates/unreal_ffi",
+    "crates/unreal_example"
+]
