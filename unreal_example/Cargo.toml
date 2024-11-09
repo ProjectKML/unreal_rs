@@ -1,11 +1,10 @@
 [package]
-name = "ue5_example"
+name = "unreal_example"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ue5 = { path = "../ue5" }
-log = "0.4.22"
+unreal = { path = "../unreal" }
 
 [lib]
 crate-type = ["cdylib"]

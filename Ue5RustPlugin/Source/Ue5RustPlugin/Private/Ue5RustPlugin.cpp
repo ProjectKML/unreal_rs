@@ -10,7 +10,7 @@ FPlugin::FPlugin()
 
 bool FPlugin::TryLoad()
 {
-	const auto LocalTargetPath = FPaths::Combine("C:/Users/Lorenz Klaus/Documents/Projects/ue5_rs/target/debug/ue5_example.dll");
+	const auto LocalTargetPath = FPaths::Combine("C:/Users/Lorenz Klaus/Documents/Projects/ue5_rs/target/debug/unreal_example.dll");
 
 	auto* LocalHandle = FPlatformProcess::GetDllHandle(*LocalTargetPath);
 	if (LocalHandle == nullptr)

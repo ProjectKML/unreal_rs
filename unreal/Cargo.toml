@@ -1,8 +1,9 @@
 [package]
-name = "ue5"
+name = "unreal"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ue5_ffi = { path = "../ue5_ffi" }
+bevy_ecs = "0.15.0-rc.3"
+unreal_ffi = { path = "../unreal_ffi" }
 log = { version = "0.4.22", features = ["std"] }
