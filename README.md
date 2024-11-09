@@ -1,23 +1,23 @@
 <div align="center">
 
-# 🍎 ue5-rs
+# 🍎 unreal_rs
 
 **Rust bindings for Unreal Engine 5**
 
 [projectkml-badge]: https://img.shields.io/badge/projectkml-open%20source-blueviolet.svg
 [projectkml-url]: https://github.com/ProjectKML
 
-[crates-badge]: https://img.shields.io/crates/v/ue5-rs.svg
-[crates-url]: https://crates.io/crates/ue5-rs
+[crates-badge]: https://img.shields.io/crates/v/unreal_rs.svg
+[crates-url]: https://crates.io/crates/unreal_rs
 
-[docs-badge]: https://docs.rs/ue5-rs/badge.svg
-[docs-url]: https://docs.rs/ue5-rs
+[docs-badge]: https://docs.rs/unreal_rs/badge.svg
+[docs-url]: https://docs.rs/unreal_rs
 
-[dependency-badge]: https://deps.rs/repo/github/ProjectKML/ue5-rs/status.svg 
-[dependency-url]: https://deps.rs/repo/github/ProjectKML/ue5-rs
+[dependency-badge]: https://deps.rs/repo/github/ProjectKML/unreal_rs/status.svg 
+[dependency-url]: https://deps.rs/repo/github/ProjectKML/unreal_rs
 
-[build-badge]: https://github.com/ProjectKML/ue5-rs/workflows/CI/badge.svg
-[build-url]: https://github.com/ProjectKML/ue5-rs/actions
+[build-badge]: https://github.com/ProjectKML/unreal_rs/workflows/CI/badge.svg
+[build-url]: https://github.com/ProjectKML/unreal_rs/actions
 
 [![ProjectKML][projectkml-badge]][projectkml-url]
 [![Crates.io][crates-badge]][crates-url]
