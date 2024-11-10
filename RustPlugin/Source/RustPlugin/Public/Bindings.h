@@ -10,8 +10,13 @@ struct UnrealBindings {
   PFN_Log log;
 };
 
-struct RustBindings {
+using PFN_BeginPlayECS = void(*)();
 
+using PFN_TickECS = void(*)(float dt);
+
+struct RustBindings {
+  PFN_BeginPlayECS begin_play_ecs;
+  PFN_TickECS tick_ecs;
 };
 
 using PFN_RegisterModule = uint32_t(*)(const UnrealBindings*, RustBindings*);
