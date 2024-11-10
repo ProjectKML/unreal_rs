@@ -5,7 +5,7 @@ struct ExampleModule;
 
 impl BuildModule for ExampleModule {
     fn build(&self, module: &mut Module) {
-        module.insert_resource().add_systems()
+        unreal::log::warn!("Hello, World! from Rust");
     }
 }
 

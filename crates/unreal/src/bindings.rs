@@ -7,6 +7,7 @@ pub(crate) unsafe fn set(bindings: *const UnrealBindings) {
 }
 
 #[inline]
+#[allow(static_mut_refs)]
 pub fn get() -> &'static UnrealBindings {
     unsafe { BINDINGS.as_ref().unwrap_unchecked() }
 }

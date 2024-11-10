@@ -1,4 +1,7 @@
-use crate::ecs::{prelude::*, schedule::ScheduleLabel, system::SystemId};
+use crate::{
+    ecs::{prelude::*, schedule::ScheduleLabel, system::SystemId},
+    Plugins,
+};
 
 pub trait BuildModule {
     fn build(&self, module: &mut Module);
@@ -41,6 +44,12 @@ impl Module {
     {
         self.world.register_system(system)
     }
+
+    #[track_caller]
+    pub fn add_plugins<M>(&mut self, plugins: impl Plugins<M>) -> &mut Self {
+        plugins.add_to_module(self);
+        self
+    }
 }
 
 #[macro_export]
@@ -51,7 +60,7 @@ macro_rules! implement_module {
             unreal_bindings: *const $crate::ffi::UnrealBindings,
             rust_bindings: *mut $crate::ffi::RustBindings,
         ) -> u32 {
-            let current: $module = $module::default();
+            let current: $module = Default::default();
 
             $crate::init(unreal_bindings, rust_bindings, Box::new(current))
         }

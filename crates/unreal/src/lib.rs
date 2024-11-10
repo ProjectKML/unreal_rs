@@ -2,9 +2,11 @@ pub mod bindings;
 mod init;
 pub mod log;
 mod module;
+mod plugin;
 
 pub use init::*;
 pub use module::*;
+pub use plugin::*;
 
 pub mod ecs {
     pub use bevy_ecs::*;
