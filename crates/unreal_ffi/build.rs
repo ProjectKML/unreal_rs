@@ -10,5 +10,5 @@ fn main() {
         .include_item("PFN_RegisterModule")
         .generate()
         .expect("Failed to generate bindings")
-        .write_to_file("../Ue5RustPlugin/Source/Ue5RustPlugin/Public/Bindings.h");
+        .write_to_file("../../RustPlugin/Source/RustPlugin/Public/Bindings.h");
 }
