@@ -7,7 +7,7 @@ pub unsafe fn init(
     rust_bindings: *mut RustBindings,
     builder: Box<dyn BuildModule>,
 ) -> u32 {
-    bindings::set(unreal_bindings);
+    bindings::set(&*unreal_bindings, &mut *rust_bindings);
 
     crate::log::init().unwrap();
 

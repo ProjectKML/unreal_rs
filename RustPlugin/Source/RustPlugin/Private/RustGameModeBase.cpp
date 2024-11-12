@@ -1,4 +1,5 @@
 #include "RustGameModeBase.h"
+#include "RustPlugin.h"
 
 ARustGameModeBase::ARustGameModeBase() {
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -11,11 +12,14 @@ ARustGameModeBase::~ARustGameModeBase() {
 
 void ARustGameModeBase::StartPlay() {
 	Super::StartPlay();
-	
-	UE_LOG(LogTemp, Warning, TEXT("ARustGameModeBase::StartPlay"));
+
+    const auto& Functions = FRustPluginModule::Get().GetRustFunctions();
+    Functions.begin_play_ecs();
 }
 
 void ARustGameModeBase::Tick(float Dt) {
 	Super::Tick(Dt);
-	UE_LOG(LogTemp, Warning, TEXT("ARustGameModeBase::Tick"));
+
+    const auto& Functions = FRustPluginModule::Get().GetRustFunctions();
+    Functions.tick_ecs(Dt);
 }
