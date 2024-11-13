@@ -1,3 +1,4 @@
+use bevy_ecs::schedule::Schedules;
 use unreal_ffi::{RustBindings, UnrealBindings};
 
 use crate::{bindings, BuildModule, Module};
@@ -12,6 +13,7 @@ pub unsafe fn init(
     crate::log::init().unwrap();
 
     let mut module = Module::default();
+    module.world.insert_resource(Schedules::default());
     builder.build(&mut module);
 
     Module::set(module);
