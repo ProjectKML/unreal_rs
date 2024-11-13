@@ -4,21 +4,15 @@
 #include "BindingsImpl.h"
 #include "Modules/ModuleManager.h"
 
-struct FPlugin final
-{
-	FPlugin();
-
-	bool TryLoad();
-};
-
 class FRustPluginModule : public IModuleInterface
 {
 private:
-	FPlugin Plugin;
-
     RustBindings RustFunctions;
+	
+	bool TryLoadDynamic();
 public:
   	static FRustPluginModule& Get();
+    static FRustPluginModule* TryGet();
 
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;

@@ -7,7 +7,7 @@ UCLASS()
 class RUSTPLUGIN_API ARustGameModeBase : public AGameModeBase {
 	GENERATED_BODY()
 private:
-
+	bool Initialized = false;
 public:
 	ARustGameModeBase();
 	~ARustGameModeBase();

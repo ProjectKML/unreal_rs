@@ -1,10 +1,12 @@
 pub mod bindings;
 mod init;
 pub mod log;
+mod main_schedule;
 mod module;
 mod plugin;
 
 pub use init::*;
+pub use main_schedule::*;
 pub use module::*;
 pub use plugin::*;
 

@@ -2,9 +2,17 @@
 
 #define LOCTEXT_NAMESPACE "FRustPluginModule"
 
-FPlugin::FPlugin() {}
+static FRustPluginModule* _SINGLETON = nullptr;
 
-bool FPlugin::TryLoad() {
+FRustPluginModule& FRustPluginModule::Get() {
+	return *_SINGLETON;
+}
+
+FRustPluginModule* FRustPluginModule::TryGet() {
+	return _SINGLETON;
+}
+
+bool FRustPluginModule::TryLoadDynamic() {
 	const auto LocalTargetPath = FPaths::Combine("C:/Users/Lorenz Klaus/Documents/Projects/ue5_rs/target/debug/unreal_example.dll");
 
 	auto* LocalHandle = FPlatformProcess::GetDllHandle(*LocalTargetPath);
@@ -21,11 +29,10 @@ bool FPlugin::TryLoad() {
 
 	UnrealBindings UnrealBindings = {};
 	UnrealBindings.log = BindingsImpl::Log;
-	RustBindings RustBindings;
 
 	UE_LOG(LogTemp, Warning, TEXT("Starting register"));
 
-	const auto Result = RegisterModule(&UnrealBindings, &RustBindings);
+	const auto Result = RegisterModule(&UnrealBindings, &RustFunctions);
 	if (Result != 0) {
 		UE_LOG(LogTemp, Warning, TEXT("Register rust module failed: %d"), Result);
 		return false;
@@ -34,14 +41,8 @@ bool FPlugin::TryLoad() {
 	return true;
 }
 
-static FRustPluginModule* _SINGLETON = nullptr;
-
-FRustPluginModule& FRustPluginModule::Get() {
-	return *_SINGLETON;
-}
-
 void FRustPluginModule::StartupModule() {
-	Plugin.TryLoad();
+    TryLoadDynamic();
 
     _SINGLETON = this;
 }

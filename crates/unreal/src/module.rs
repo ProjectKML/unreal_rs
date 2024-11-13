@@ -1,7 +1,11 @@
+use std::mem::MaybeUninit;
+
 use crate::{
     ecs::{prelude::*, schedule::ScheduleLabel, system::SystemId},
     Plugins,
 };
+
+static mut MODULE: MaybeUninit<Module> = MaybeUninit::uninit();
 
 pub trait BuildModule {
     fn build(&self, module: &mut Module);
@@ -9,10 +13,21 @@ pub trait BuildModule {
 
 #[derive(Default)]
 pub struct Module {
-    world: World,
+    pub(crate) world: World,
 }
 
 impl Module {
+    #[inline]
+    pub(crate) unsafe fn set(module: Module) {
+        MODULE = MaybeUninit::new(module);
+    }
+
+    #[inline]
+    #[allow(static_mut_refs)]
+    pub(crate) unsafe fn get_mut() -> &'static mut Module {
+        MODULE.assume_init_mut()
+    }
+
     pub fn insert_resource<R: Resource>(&mut self, resource: R) -> &mut Self {
         self.world.insert_resource(resource);
         self

@@ -14,5 +14,7 @@ pub unsafe fn init(
     let mut module = Module::default();
     builder.build(&mut module);
 
+    Module::set(module);
+
     0
 }
