@@ -24,6 +24,7 @@ pub struct UnrealBindings {
     pub UObject_CreateDefaultSubobject: PFN_UObject_CreateDefaultSubobject,
 
     pub UWorld_SpawnActor: PFN_UWorld_SpawnActor,
+    pub UWorld_SpawnECSActor: PFN_UWorld_SpawnECSActor,
 }
 
 pub type PFN_Log = unsafe extern "C" fn(*const c_char, usize);

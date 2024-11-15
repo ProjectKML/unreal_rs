@@ -6,7 +6,7 @@
 UCLASS()
 class AECSActor : public AActor {
     GENERATED_BODY()
-protected:
+public:
     uint64 Entity;
 
     virtual void BeginPlay() override;

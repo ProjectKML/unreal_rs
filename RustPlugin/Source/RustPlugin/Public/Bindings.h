@@ -44,16 +44,31 @@ struct TRotator {
 
 using FRotator = TRotator<double>;
 
+struct FActorSpawnParameters {
+  const char *NamePtr;
+  uintptr_t NameLen;
+  AActor *Template;
+  AActor *Owner;
+};
+
 using PFN_UWorld_SpawnActor = AActor*(*)(UWorld *This,
                                          UClass *InClass,
                                          const FVector *Location,
-                                         const FRotator *Rotation);
+                                         const FRotator *Rotation,
+                                         const FActorSpawnParameters *SpawnParameters);
+
+using PFN_UWorld_SpawnECSActor = AActor*(*)(UWorld *This,
+                                            uint64_t Entity,
+                                            const FVector *Location,
+                                            const FRotator *Rotation,
+                                            const FActorSpawnParameters *SpawnParameters);
 
 struct UnrealBindings {
   PFN_Log Log;
   PFN_AActor_GetWorld AActor_GetWorld;
   PFN_UObject_CreateDefaultSubobject UObject_CreateDefaultSubobject;
   PFN_UWorld_SpawnActor UWorld_SpawnActor;
+  PFN_UWorld_SpawnECSActor UWorld_SpawnECSActor;
 };
 
 using PFN_BeginPlayECS = void(*)(UWorld *world);

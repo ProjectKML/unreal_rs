@@ -18,5 +18,12 @@ namespace impl {
     bindings::AActor* UWorld_SpawnActor(bindings::UWorld* This,
                                         bindings::UClass* InClass,
                                         const bindings::FVector* Location,
-                                        const bindings::FRotator* Rotation);
+                                        const bindings::FRotator* Rotation,
+                                        const bindings::FActorSpawnParameters* SpawnParameters);
+
+    bindings::AActor* UWorld_SpawnECSActor(bindings::UWorld* This,
+                                        uint64_t Entity,
+                                        const bindings::FVector* Location,
+                                        const bindings::FRotator* Rotation,
+                                        const bindings::FActorSpawnParameters* SpawnParameters);
 }
