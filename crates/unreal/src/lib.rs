@@ -11,9 +11,7 @@ pub use main_schedule::*;
 pub use module::*;
 pub use plugin::*;
 
-pub mod ecs {
-    pub use bevy_ecs::*;
-}
+pub mod ecs;
 
 pub mod ffi {
     pub use unreal_ffi::*;

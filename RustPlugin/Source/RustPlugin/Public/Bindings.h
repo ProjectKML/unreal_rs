@@ -56,9 +56,9 @@ struct UnrealBindings {
   PFN_UWorld_SpawnActor UWorld_SpawnActor;
 };
 
-using PFN_BeginPlayECS = void(*)();
+using PFN_BeginPlayECS = void(*)(UWorld *world);
 
-using PFN_TickECS = void(*)(float dt);
+using PFN_TickECS = void(*)(UWorld *world, float dt);
 
 struct RustBindings {
   PFN_BeginPlayECS begin_play_ecs;

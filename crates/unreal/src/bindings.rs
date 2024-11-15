@@ -2,7 +2,7 @@ use std::mem::MaybeUninit;
 
 use unreal_ffi::{RustBindings, UnrealBindings};
 
-use crate::{ecs::schedule::Schedules, Module, Startup, Update};
+use crate::{ecs::prelude::*, ffi, Module, Startup, Update};
 
 static mut BINDINGS: MaybeUninit<UnrealBindings> = MaybeUninit::uninit();
 
@@ -20,7 +20,7 @@ pub fn get() -> &'static UnrealBindings {
 }
 
 // Rust binding functions
-unsafe extern "C" fn begin_play_ecs() {
+unsafe extern "C" fn begin_play_ecs(world: *mut ffi::UWorld) {
     let module = Module::get_mut();
 
     let mut schedules = module.world.remove_resource::<Schedules>().unwrap();
@@ -31,7 +31,7 @@ unsafe extern "C" fn begin_play_ecs() {
     module.world.insert_resource(schedules);
 }
 
-unsafe extern "C" fn tick_ecs(dt: f32) {
+unsafe extern "C" fn tick_ecs(world: *mut ffi::UWorld, dt: f32) {
     let module = Module::get_mut();
 
     let mut schedules = module.world.remove_resource::<Schedules>().unwrap();

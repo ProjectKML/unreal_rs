@@ -12,32 +12,15 @@ ARustGameModeBase::~ARustGameModeBase() {}
 void ARustGameModeBase::StartPlay() {
 	Super::StartPlay();
 
-    const auto* Module = FRustPluginModule::TryGet();
-    if (!Module) {
-      	UE_LOG(LogTemp, Warning, TEXT("StartPlay failed"));
-    	return;
-    }
-
-    const auto& Functions = Module->GetRustFunctions();
-    Functions.begin_play_ecs();
-
-    Initialized = true;
+    const auto& Module = FRustPluginModule::Get();
+    const auto& Functions = Module.GetRustFunctions();
+	Functions.begin_play_ecs(static_cast<bindings::UWorld*>(GetWorld()));
 }
 
 void ARustGameModeBase::Tick(float Dt) {
 	Super::Tick(Dt);
 
-    const auto* Module = FRustPluginModule::TryGet();
-    if (!Module) {
-        UE_LOG(LogTemp, Warning, TEXT("Tick failed"));
-    	return;
-    }
-
-    const auto& Functions = Module->GetRustFunctions();
-    if (!Initialized) {
-    	Initialized = true;
-        Functions.begin_play_ecs();
-    }
-
-	Functions.tick_ecs(Dt);
+	const auto& Module = FRustPluginModule::Get();
+	const auto& Functions = Module.GetRustFunctions();
+	Functions.tick_ecs(static_cast<bindings::UWorld*>(GetWorld()), Dt);
 }

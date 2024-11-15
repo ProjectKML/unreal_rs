@@ -1,7 +1,6 @@
-use bevy_ecs::schedule::Schedules;
 use unreal_ffi::{RustBindings, UnrealBindings};
 
-use crate::{bindings, BuildModule, Module};
+use crate::{bindings, ecs::prelude::*, BuildModule, Module};
 
 pub unsafe fn init(
     unreal_bindings: *const UnrealBindings,

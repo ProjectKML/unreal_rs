@@ -1,3 +1,5 @@
+use crate::UWorld;
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct RustBindings {
@@ -5,5 +7,5 @@ pub struct RustBindings {
     pub tick_ecs: PFN_TickECS,
 }
 
-pub type PFN_BeginPlayECS = unsafe extern "C" fn();
-pub type PFN_TickECS = unsafe extern "C" fn(dt: f32);
+pub type PFN_BeginPlayECS = unsafe extern "C" fn(world: *mut UWorld);
+pub type PFN_TickECS = unsafe extern "C" fn(world: *mut UWorld, dt: f32);

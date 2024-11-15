@@ -1,6 +1,6 @@
-use unreal::{prelude::*, Startup, Update};
+use unreal::{ecs::prelude::Commands, prelude::*, Startup, Update};
 
-fn setup() {
+fn setup(mut commands: Commands) {
     unreal::log::warn!("//setup");
 }
 
