@@ -21,7 +21,7 @@ pub struct UnrealBindings {
 
     pub AActor_GetWorld: PFN_AActor_GetWorld,
 
-    pub UClass_CreateDefaultSubobject: PFN_UObject_CreateDefaultSubobject,
+    pub UObject_CreateDefaultSubobject: PFN_UObject_CreateDefaultSubobject,
 
     pub UWorld_SpawnActor: PFN_UWorld_SpawnActor,
 }

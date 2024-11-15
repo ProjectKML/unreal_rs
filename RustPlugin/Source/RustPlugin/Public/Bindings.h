@@ -19,8 +19,9 @@ using UObject = void;
 using UClass = void;
 
 using PFN_UObject_CreateDefaultSubobject = UObject*(*)(UObject *This,
-                                                       const uint8_t *SubobjectFName,
+                                                       const uint8_t *SubobjectFNamePtr,
                                                        uintptr_t SubobjectFNameLen,
+                                                       UClass *ReturnType,
                                                        UClass *ClassToCreateByDefault,
                                                        bool bIsRequired,
                                                        bool bIsTransient);
@@ -43,14 +44,15 @@ struct TRotator {
 
 using FRotator = TRotator<double>;
 
-using PFN_UWorld_SpawnActor = void(*)(UWorld *This,
-                                      const FVector *Location,
-                                      const FRotator *Rotation);
+using PFN_UWorld_SpawnActor = AActor*(*)(UWorld *This,
+                                         UClass *InClass,
+                                         const FVector *Location,
+                                         const FRotator *Rotation);
 
 struct UnrealBindings {
   PFN_Log Log;
   PFN_AActor_GetWorld AActor_GetWorld;
-  PFN_UObject_CreateDefaultSubobject UClass_CreateDefaultSubobject;
+  PFN_UObject_CreateDefaultSubobject UObject_CreateDefaultSubobject;
   PFN_UWorld_SpawnActor UWorld_SpawnActor;
 };
 

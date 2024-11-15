@@ -6,8 +6,9 @@ pub type UObject = c_void;
 
 pub type PFN_UObject_CreateDefaultSubobject = unsafe extern "C" fn(
     This: *mut UObject,
-    SubobjectFName: *const u8,
+    SubobjectFNamePtr: *const u8,
     SubobjectFNameLen: usize,
+    ReturnType: *mut UClass,
     ClassToCreateByDefault: *mut UClass,
     bIsRequired: bool,
     bIsTransient: bool,
