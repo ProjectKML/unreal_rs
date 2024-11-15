@@ -21,14 +21,14 @@ bool FRustPluginModule::TryLoadDynamic() {
 		return false;
 	}
 
-	auto* RegisterModule = static_cast<PFN_RegisterModule>(FPlatformProcess::GetDllExport(LocalHandle, TEXT("unreal_register_module")));
+	auto* RegisterModule = static_cast<bindings::PFN_RegisterModule>(FPlatformProcess::GetDllExport(LocalHandle, TEXT("unreal_register_module")));
 	if (RegisterModule == nullptr) {
 		UE_LOG(LogTemp, Warning, TEXT("Failed to load entry point"));
 		return false;
 	}
 
-	UnrealBindings UnrealBindings = {};
-	UnrealBindings.log = BindingsImpl::Log;
+	bindings::UnrealBindings UnrealBindings = {};
+	UnrealBindings.Log = impl::Log;
 
 	UE_LOG(LogTemp, Warning, TEXT("Starting register"));
 

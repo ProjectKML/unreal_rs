@@ -4,6 +4,8 @@
 #include <ostream>
 #include <new>
 
+namespace bindings {
+
 using PFN_Log = void(*)(const char*, uintptr_t);
 
 using UWorld = void;
@@ -62,3 +64,5 @@ struct RustBindings {
 };
 
 using PFN_RegisterModule = uint32_t(*)(const UnrealBindings*, RustBindings*);
+
+}  // namespace bindings

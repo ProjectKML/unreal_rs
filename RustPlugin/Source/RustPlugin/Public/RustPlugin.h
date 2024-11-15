@@ -7,7 +7,7 @@
 class FRustPluginModule : public IModuleInterface
 {
 private:
-    RustBindings RustFunctions;
+    bindings::RustBindings RustFunctions;
 	
 	bool TryLoadDynamic();
 public:
@@ -17,7 +17,7 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-    [[nodiscard]] const RustBindings& GetRustFunctions() const noexcept {
+    [[nodiscard]] const bindings::RustBindings& GetRustFunctions() const noexcept {
     	return RustFunctions;
     }
 };

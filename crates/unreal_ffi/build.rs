@@ -5,6 +5,7 @@ fn main() {
 
     cbindgen::Builder::new()
         .with_crate(crate_dir)
+        .with_namespace("bindings")
         .include_item("UnrealBindings")
         .include_item("RustBindings")
         .include_item("PFN_RegisterModule")
