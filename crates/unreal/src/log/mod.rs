@@ -14,7 +14,7 @@ impl Log for UnrealLogger {
         if self.enabled(record.metadata()) {
             let message = record.args().to_string();
 
-            unsafe { (bindings::get().log)(message.as_ptr().cast(), message.len()) }
+            unsafe { (bindings::get().Log)(message.as_ptr().cast(), message.len()) }
         }
     }
 

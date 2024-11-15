@@ -2,6 +2,7 @@ pub mod bindings;
 mod init;
 pub mod log;
 mod main_schedule;
+pub mod math;
 mod module;
 mod plugin;
 

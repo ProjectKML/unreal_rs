@@ -1,7 +1,9 @@
 #pragma once
 
+namespace Bindings {
 #include "Bindings.h"
 
-namespace BindingsImpl {
-    void Log(const char* Message, uintptr_t Size);
+    namespace Impl {
+        void Log(const char* Message, uintptr_t Size);
+    }
 }
