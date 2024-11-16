@@ -32,6 +32,7 @@ bool FRustPluginModule::TryLoadDynamic() {
     UnrealBindings.AActor_GetWorld = impl::AActor_GetWorld;
     UnrealBindings.UObject_CreateDefaultSubobject = impl::UObject_CreateDefaultSubobject;
     UnrealBindings.UWorld_SpawnActor = impl::UWorld_SpawnActor;
+    UnrealBindings.UWorld_SpawnECSActor = impl::UWorld_SpawnECSActor;
 
 	UE_LOG(LogTemp, Warning, TEXT("Starting register"));
 
