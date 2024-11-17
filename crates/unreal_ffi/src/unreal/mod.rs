@@ -20,6 +20,8 @@ pub struct UnrealBindings {
     pub Log: PFN_Log,
 
     pub AActor_GetWorld: PFN_AActor_GetWorld,
+    pub AActor_GetActorLabel: PFN_AActor_GetActorLabel,
+    pub AActor_SetActorLabel: PFN_AActor_SetActorLabel,
 
     pub UObject_CreateDefaultSubobject: PFN_UObject_CreateDefaultSubobject,
 

@@ -1,6 +1,6 @@
 use std::ffi::{c_char, c_void};
 
-use crate::UWorld;
+use crate::{RustString, UWorld};
 
 pub type AActor = c_void;
 
@@ -14,3 +14,6 @@ pub struct FActorSpawnParameters {
 }
 
 pub type PFN_AActor_GetWorld = unsafe extern "C" fn(This: *mut AActor) -> *mut UWorld;
+pub type PFN_AActor_GetActorLabel = unsafe extern "C" fn(This: *mut AActor, Name: *mut RustString);
+pub type PFN_AActor_SetActorLabel =
+    unsafe extern "C" fn(This: *mut AActor, NamePtr: *const c_char, NameLen: usize);

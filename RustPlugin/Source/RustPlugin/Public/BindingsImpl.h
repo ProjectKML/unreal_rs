@@ -7,6 +7,9 @@ namespace impl {
 
     bindings::UWorld* AActor_GetWorld(bindings::AActor* This);
 
+    void AActor_GetActorLabel(bindings::AActor *This, bindings::RustString *Name);
+    void AActor_SetActorLabel(bindings::AActor *This, const char *NamePtr, uintptr_t NameLen);
+
     bindings::UObject* UObject_CreateDefaultSubobject(bindings::UObject* This,
                                                       const uint8_t* SubobjectFNamePtr,
                                                       uintptr_t SubobjectFNameLen,

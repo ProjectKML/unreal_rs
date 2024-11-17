@@ -14,6 +14,12 @@ using AActor = void;
 
 using PFN_AActor_GetWorld = UWorld*(*)(AActor *This);
 
+using RustString = void;
+
+using PFN_AActor_GetActorLabel = void(*)(AActor *This, RustString *Name);
+
+using PFN_AActor_SetActorLabel = void(*)(AActor *This, const char *NamePtr, uintptr_t NameLen);
+
 using UObject = void;
 
 using UClass = void;
@@ -66,16 +72,21 @@ using PFN_UWorld_SpawnECSActor = AActor*(*)(UWorld *This,
 struct UnrealBindings {
   PFN_Log Log;
   PFN_AActor_GetWorld AActor_GetWorld;
+  PFN_AActor_GetActorLabel AActor_GetActorLabel;
+  PFN_AActor_SetActorLabel AActor_SetActorLabel;
   PFN_UObject_CreateDefaultSubobject UObject_CreateDefaultSubobject;
   PFN_UWorld_SpawnActor UWorld_SpawnActor;
   PFN_UWorld_SpawnECSActor UWorld_SpawnECSActor;
 };
+
+using PFN_String_PushStr = void(*)(RustString *s, const char *ptr, uintptr_t len);
 
 using PFN_BeginPlayECS = void(*)(UWorld *world);
 
 using PFN_TickECS = void(*)(UWorld *world, float dt);
 
 struct RustBindings {
+  PFN_String_PushStr string_push_str;
   PFN_BeginPlayECS begin_play_ecs;
   PFN_TickECS tick_ecs;
 };

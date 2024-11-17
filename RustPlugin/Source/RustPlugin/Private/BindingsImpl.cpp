@@ -1,6 +1,7 @@
 #include "BindingsImpl.h"
-#include "GameFramework/Actor.h"
 #include "ECSActor.h"
+#include "GameFramework/Actor.h"
+#include "RustPlugin.h"
 
 namespace impl {
     void Log(const char* S, uintptr_t Len) {
@@ -10,6 +11,18 @@ namespace impl {
 
     bindings::UWorld* AActor_GetWorld(bindings::AActor* This) {
         return static_cast<bindings::UWorld*>(static_cast<AActor*>(This)->GetWorld());
+    }
+
+    void AActor_GetActorLabel(bindings::AActor *This, bindings::RustString *Name) {
+     	const auto& NameStr = static_cast<AActor*>(This)->GetActorLabel();
+
+        const auto& RustFunctions = FRustPluginModule::Get().GetRustFunctions();
+        //TODO:
+    }
+
+    void AActor_SetActorLabel(bindings::AActor *This, const char *NamePtr, uintptr_t NameLen) {
+    	FString Name(NameLen, UTF8_TO_TCHAR(NamePtr));
+        static_cast<AActor*>(This)->SetActorLabel(Name);
     }
 
     bindings::UObject* UObject_CreateDefaultSubobject(bindings::UObject* This,
@@ -34,6 +47,7 @@ namespace impl {
         if (SpawnParameters) {
             if (SpawnParameters->NamePtr) {
                 Result.Name = FName(SpawnParameters->NameLen, UTF8_TO_TCHAR(SpawnParameters->NamePtr));
+              	UE_LOG(LogTemp, Warning, TEXT("FName value: %s"), *Result.Name.ToString());
             }
             Result.Template = static_cast<AActor*>(SpawnParameters->Template);
             Result.Owner = static_cast<AActor*>(SpawnParameters->Owner);

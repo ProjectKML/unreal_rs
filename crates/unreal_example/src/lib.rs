@@ -3,7 +3,13 @@ use unreal::{ecs::SpawnActorCommands, prelude::*};
 fn setup(mut commands: Commands) {
     unreal::log::warn!("//setup");
 
-    commands.spawn_empty_actor("HeyFromRust");
+    commands.spawn_empty_actor(|actor| {
+        actor.set_label("my_first_rust_actor");
+    });
+
+    commands.spawn_empty_actor(|actor| {
+        actor.set_label("my_second_rust_actor");
+    });
 }
 
 fn update() {
