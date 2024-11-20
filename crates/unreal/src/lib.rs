@@ -6,6 +6,7 @@ pub mod log;
 mod main_schedule;
 pub mod math;
 mod module;
+pub mod object;
 mod plugin;
 pub mod prelude;
 
