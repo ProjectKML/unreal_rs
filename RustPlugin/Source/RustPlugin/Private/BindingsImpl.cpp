@@ -25,6 +25,10 @@ namespace impl {
         static_cast<AActor*>(This)->SetActorLabel(Name);
     }
 
+    bindings::UClass* AActor_StaticClass() {
+    	return static_cast<bindings::UClass*>(AActor::StaticClass());
+    }
+
     bindings::UObject* UObject_CreateDefaultSubobject(bindings::UObject* This,
                                                       const uint8_t* SubobjectFNamePtr,
                                                       uintptr_t SubobjectFNameLen,
@@ -39,6 +43,10 @@ namespace impl {
             static_cast<UClass*>(ClassToCreateByDefault),
             bIsRequired,
             bIsTransient));
+    }
+
+    bindings::UClass* UObject_StaticClass() {
+		return static_cast<bindings::UClass*>(UObject::StaticClass());
     }
 
     static inline FActorSpawnParameters GetActorSpawnParameters(const bindings::FActorSpawnParameters* SpawnParameters) {

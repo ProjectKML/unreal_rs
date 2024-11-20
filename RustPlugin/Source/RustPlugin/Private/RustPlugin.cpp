@@ -32,7 +32,9 @@ bool FRustPluginModule::TryLoadDynamic() {
     UnrealBindings.AActor_GetWorld = impl::AActor_GetWorld;
     UnrealBindings.AActor_GetActorLabel = impl::AActor_GetActorLabel;
     UnrealBindings.AActor_SetActorLabel = impl::AActor_SetActorLabel;
+    UnrealBindings.AActor_StaticClass = impl::AActor_StaticClass;
     UnrealBindings.UObject_CreateDefaultSubobject = impl::UObject_CreateDefaultSubobject;
+    UnrealBindings.UObject_StaticClass = impl::UObject_StaticClass;
     UnrealBindings.UWorld_SpawnActor = impl::UWorld_SpawnActor;
     UnrealBindings.UWorld_SpawnECSActor = impl::UWorld_SpawnECSActor;
 

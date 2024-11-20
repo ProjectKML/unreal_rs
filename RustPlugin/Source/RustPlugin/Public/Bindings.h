@@ -20,9 +20,11 @@ using PFN_AActor_GetActorLabel = void(*)(AActor *This, RustString *Name);
 
 using PFN_AActor_SetActorLabel = void(*)(AActor *This, const char *NamePtr, uintptr_t NameLen);
 
-using UObject = void;
-
 using UClass = void;
+
+using PFN_AActor_StaticClass = UClass*(*)();
+
+using UObject = void;
 
 using PFN_UObject_CreateDefaultSubobject = UObject*(*)(UObject *This,
                                                        const uint8_t *SubobjectFNamePtr,
@@ -31,6 +33,8 @@ using PFN_UObject_CreateDefaultSubobject = UObject*(*)(UObject *This,
                                                        UClass *ClassToCreateByDefault,
                                                        bool bIsRequired,
                                                        bool bIsTransient);
+
+using PFN_UObject_StaticClass = UClass*(*)();
 
 template<typename T>
 struct TVector {
@@ -74,7 +78,9 @@ struct UnrealBindings {
   PFN_AActor_GetWorld AActor_GetWorld;
   PFN_AActor_GetActorLabel AActor_GetActorLabel;
   PFN_AActor_SetActorLabel AActor_SetActorLabel;
+  PFN_AActor_StaticClass AActor_StaticClass;
   PFN_UObject_CreateDefaultSubobject UObject_CreateDefaultSubobject;
+  PFN_UObject_StaticClass UObject_StaticClass;
   PFN_UWorld_SpawnActor UWorld_SpawnActor;
   PFN_UWorld_SpawnECSActor UWorld_SpawnECSActor;
 };

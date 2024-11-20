@@ -22,8 +22,10 @@ pub struct UnrealBindings {
     pub AActor_GetWorld: PFN_AActor_GetWorld,
     pub AActor_GetActorLabel: PFN_AActor_GetActorLabel,
     pub AActor_SetActorLabel: PFN_AActor_SetActorLabel,
+    pub AActor_StaticClass: PFN_AActor_StaticClass,
 
     pub UObject_CreateDefaultSubobject: PFN_UObject_CreateDefaultSubobject,
+    pub UObject_StaticClass: PFN_UObject_StaticClass,
 
     pub UWorld_SpawnActor: PFN_UWorld_SpawnActor,
     pub UWorld_SpawnECSActor: PFN_UWorld_SpawnECSActor,

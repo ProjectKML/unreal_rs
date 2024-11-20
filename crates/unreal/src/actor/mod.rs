@@ -12,7 +12,6 @@ use crate::{
 #[derive(Debug, Component, PartialEq, Eq, Hash)]
 pub struct Actor(pub(crate) *mut ffi::AActor);
 
-// SAFETY: We ensure that the actor is never accessed in a way that is not ok.
 unsafe impl Send for Actor {}
 unsafe impl Sync for Actor {}
 
@@ -31,14 +30,25 @@ impl RawType for Actor {
 }
 
 impl HasClass for Actor {
+    #[inline]
     fn get_class() -> Class {
-        todo!()
+        unsafe { Class::from_raw((bindings::get().AActor_StaticClass)()) }
     }
 }
 
 impl Actor {
     #[inline]
     pub fn create_default_subobject<T: HasClass>(&mut self, name: &str) -> T {
+        self.create_default_subobject_custom(name, true, false)
+    }
+
+    #[inline]
+    pub fn create_default_subobject_custom<T: HasClass>(
+        &mut self,
+        name: &str,
+        is_required: bool,
+        is_transient: bool,
+    ) -> T {
         let raw = unsafe {
             (bindings::get().UObject_CreateDefaultSubobject)(
                 self.0.cast(),
@@ -46,8 +56,8 @@ impl Actor {
                 name.len(),
                 T::get_class().as_raw(),
                 ptr::null_mut(),
-                true,
-                false,
+                is_required,
+                is_transient,
             )
         }
         .cast();

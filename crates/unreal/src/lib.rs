@@ -1,3 +1,5 @@
+extern crate alloc;
+
 mod actor;
 pub mod bindings;
 pub mod ecs;

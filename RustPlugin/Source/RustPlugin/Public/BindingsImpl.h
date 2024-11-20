@@ -9,6 +9,7 @@ namespace impl {
 
     void AActor_GetActorLabel(bindings::AActor *This, bindings::RustString *Name);
     void AActor_SetActorLabel(bindings::AActor *This, const char *NamePtr, uintptr_t NameLen);
+    bindings::UClass* AActor_StaticClass();
 
     bindings::UObject* UObject_CreateDefaultSubobject(bindings::UObject* This,
                                                       const uint8_t* SubobjectFNamePtr,
@@ -17,6 +18,7 @@ namespace impl {
                                                       bindings::UClass* ClassToCreateByDefault,
                                                       bool bIsRequired,
                                                       bool bIsTransient);
+    bindings::UClass* UObject_StaticClass();
 
     bindings::AActor* UWorld_SpawnActor(bindings::UWorld* This,
                                         bindings::UClass* InClass,

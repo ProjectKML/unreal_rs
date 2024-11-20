@@ -13,3 +13,5 @@ pub type PFN_UObject_CreateDefaultSubobject = unsafe extern "C" fn(
     bIsRequired: bool,
     bIsTransient: bool,
 ) -> *mut UObject;
+
+pub type PFN_UObject_StaticClass = unsafe extern "C" fn() -> *mut UClass;
