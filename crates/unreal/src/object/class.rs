@@ -3,8 +3,7 @@ use crate::{ffi, object::RawType};
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Class(pub(crate) *mut ffi::UClass);
 
-unsafe impl Send for Class {}
-unsafe impl Sync for Class {}
+impl Class {}
 
 impl RawType for Class {
     type Type = ffi::UClass;
@@ -23,3 +22,6 @@ impl RawType for Class {
 pub trait HasClass: RawType {
     fn get_class() -> Class;
 }
+
+unsafe impl Send for Class {}
+unsafe impl Sync for Class {}

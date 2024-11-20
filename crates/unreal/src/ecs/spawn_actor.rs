@@ -25,7 +25,7 @@ impl SpawnActorCommands for Commands<'_, '_> {
     ) -> EntityCommands {
         let mut entity = self.spawn_empty();
 
-        entity.queue(move |entity: Entity, mut world: &mut World| {
+        entity.queue(move |entity: Entity, world: &mut World| {
             let uworld = world.resource_mut::<UWorld>().0;
 
             let mut actor = Actor(unsafe {
@@ -52,7 +52,7 @@ impl SpawnActorCommands for Commands<'_, '_> {
         let mut entity = self.spawn_empty();
         entity.insert(bundle);
 
-        entity.queue(move |entity: Entity, mut world: &mut World| {
+        entity.queue(move |entity: Entity, world: &mut World| {
             let uworld = world.resource_mut::<UWorld>().0;
 
             let mut actor = Actor(unsafe {

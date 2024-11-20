@@ -1,7 +1,5 @@
 pub mod components;
 
-use std::ptr;
-
 use crate::{
     bindings,
     ecs::prelude::*,
@@ -9,11 +7,30 @@ use crate::{
     object::{Class, HasClass, RawType},
 };
 
-#[derive(Debug, Component, PartialEq, Eq, Hash)]
+#[derive(Debug, Component)]
 pub struct Actor(pub(crate) *mut ffi::AActor);
 
-unsafe impl Send for Actor {}
-unsafe impl Sync for Actor {}
+impl Actor {
+    #[inline]
+    pub fn label(&self) -> String {
+        let mut buffer = String::new();
+        unsafe {
+            (bindings::get().AActor_GetActorLabel)(self.as_raw(), &mut buffer as *mut _ as *mut _);
+        }
+        buffer
+    }
+
+    #[inline]
+    pub fn set_label(&mut self, label: &str) {
+        unsafe {
+            (bindings::get().AActor_SetActorLabel)(
+                self.as_raw(),
+                label.as_ptr().cast(),
+                label.len(),
+            );
+        }
+    }
+}
 
 impl RawType for Actor {
     type Type = ffi::AActor;
@@ -36,48 +53,5 @@ impl HasClass for Actor {
     }
 }
 
-impl Actor {
-    #[inline]
-    pub fn create_default_subobject<T: HasClass>(&mut self, name: &str) -> T {
-        self.create_default_subobject_custom(name, true, false)
-    }
-
-    #[inline]
-    pub fn create_default_subobject_custom<T: HasClass>(
-        &mut self,
-        name: &str,
-        is_required: bool,
-        is_transient: bool,
-    ) -> T {
-        let raw = unsafe {
-            (bindings::get().UObject_CreateDefaultSubobject)(
-                self.0.cast(),
-                name.as_ptr().cast(),
-                name.len(),
-                T::get_class().as_raw(),
-                ptr::null_mut(),
-                is_required,
-                is_transient,
-            )
-        }
-        .cast();
-
-        unsafe { T::from_raw(raw) }
-    }
-
-    #[inline]
-    pub fn label(&self) -> String {
-        let mut buffer = String::new();
-        unsafe {
-            (bindings::get().AActor_GetActorLabel)(self.0, &mut buffer as *mut _ as *mut _);
-        }
-        buffer
-    }
-
-    #[inline]
-    pub fn set_label(&mut self, label: &str) {
-        unsafe {
-            (bindings::get().AActor_SetActorLabel)(self.0, label.as_ptr().cast(), label.len());
-        }
-    }
-}
+unsafe impl Send for Actor {}
+unsafe impl Sync for Actor {}
