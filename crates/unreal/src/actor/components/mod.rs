@@ -35,7 +35,7 @@ impl RawType for ActorComponent {
 impl HasClass for ActorComponent {
     #[inline]
     fn get_class() -> Class {
-        unsafe { Class::from_raw((bindings::get().AActorComponent_StaticClass)()) }
+        unsafe { Class::from_raw((bindings::get().UActorComponent_StaticClass)()) }
     }
 }
 

@@ -29,6 +29,14 @@ namespace impl {
     	return static_cast<bindings::UClass*>(AActor::StaticClass());
     }
 
+    bindings::UClass* UActorComponent_StaticClass() {
+        return static_cast<bindings::UClass*>(UActorComponent::StaticClass());
+    }
+
+    bindings::UClass* UMeshComponent_StaticClass() {
+        return static_cast<bindings::UClass*>(UMeshComponent::StaticClass());
+    }
+
     bindings::UObject* UObject_CreateDefaultSubobject(bindings::UObject* This,
                                                       const uint8_t* SubobjectFNamePtr,
                                                       uintptr_t SubobjectFNameLen,
@@ -47,6 +55,18 @@ namespace impl {
 
     bindings::UClass* UObject_StaticClass() {
 		return static_cast<bindings::UClass*>(UObject::StaticClass());
+    }
+
+    bindings::UClass* UPrimitiveComponent_StaticClass() {
+        return static_cast<bindings::UClass*>(UPrimitiveComponent::StaticClass());
+    }
+
+    bindings::UClass* USceneComponent_StaticClass() {
+        return static_cast<bindings::UClass*>(USceneComponent::StaticClass());
+    }
+
+    bindings::UClass* UStaticMeshComponent_StaticClass() {
+        return static_cast<bindings::UClass*>(UStaticMeshComponent::StaticClass());
     }
 
     static inline FActorSpawnParameters GetActorSpawnParameters(const bindings::FActorSpawnParameters* SpawnParameters) {

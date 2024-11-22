@@ -24,7 +24,7 @@ using UClass = void;
 
 using PFN_AActor_StaticClass = UClass*(*)();
 
-using PFN_AActorComponent_StaticClass = UClass*(*)();
+using PFN_UActorComponent_StaticClass = UClass*(*)();
 
 using PFN_UMeshComponent_StaticClass = UClass*(*)();
 
@@ -89,7 +89,7 @@ struct UnrealBindings {
   PFN_AActor_GetActorLabel AActor_GetActorLabel;
   PFN_AActor_SetActorLabel AActor_SetActorLabel;
   PFN_AActor_StaticClass AActor_StaticClass;
-  PFN_AActorComponent_StaticClass AActorComponent_StaticClass;
+  PFN_UActorComponent_StaticClass UActorComponent_StaticClass;
   PFN_UMeshComponent_StaticClass UMeshComponent_StaticClass;
   PFN_UObject_CreateDefaultSubobject UObject_CreateDefaultSubobject;
   PFN_UObject_StaticClass UObject_StaticClass;

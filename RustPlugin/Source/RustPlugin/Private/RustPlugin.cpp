@@ -27,16 +27,31 @@ bool FRustPluginModule::TryLoadDynamic() {
 		return false;
 	}
 
+    // ---- Define bindings ----
 	bindings::UnrealBindings UnrealBindings = {};
 	UnrealBindings.Log = impl::Log;
+
     UnrealBindings.AActor_GetWorld = impl::AActor_GetWorld;
     UnrealBindings.AActor_GetActorLabel = impl::AActor_GetActorLabel;
     UnrealBindings.AActor_SetActorLabel = impl::AActor_SetActorLabel;
     UnrealBindings.AActor_StaticClass = impl::AActor_StaticClass;
+
+    UnrealBindings.UActorComponent_StaticClass = impl::UActorComponent_StaticClass;
+
+    UnrealBindings.UMeshComponent_StaticClass = impl::UMeshComponent_StaticClass;
+
     UnrealBindings.UObject_CreateDefaultSubobject = impl::UObject_CreateDefaultSubobject;
     UnrealBindings.UObject_StaticClass = impl::UObject_StaticClass;
+
+    UnrealBindings.UPrimitiveComponent_StaticClass = impl::UPrimitiveComponent_StaticClass;
+
+    UnrealBindings.USceneComponent_StaticClass = impl::USceneComponent_StaticClass;
+
+    UnrealBindings.UStaticMeshComponent_StaticClass = impl::UStaticMeshComponent_StaticClass;
+
     UnrealBindings.UWorld_SpawnActor = impl::UWorld_SpawnActor;
     UnrealBindings.UWorld_SpawnECSActor = impl::UWorld_SpawnECSActor;
+    // -------------------------
 
 	UE_LOG(LogTemp, Warning, TEXT("Starting register"));
 

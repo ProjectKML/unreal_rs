@@ -32,7 +32,7 @@ pub struct UnrealBindings {
     pub AActor_SetActorLabel: PFN_AActor_SetActorLabel,
     pub AActor_StaticClass: PFN_AActor_StaticClass,
 
-    pub AActorComponent_StaticClass: PFN_AActorComponent_StaticClass,
+    pub UActorComponent_StaticClass: PFN_UActorComponent_StaticClass,
 
     pub UMeshComponent_StaticClass: PFN_UMeshComponent_StaticClass,
 
