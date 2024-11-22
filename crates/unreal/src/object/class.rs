@@ -25,3 +25,13 @@ pub trait HasClass: RawType {
 
 unsafe impl Send for Class {}
 unsafe impl Sync for Class {}
+
+pub unsafe trait Subclass<T: RawType>
+where
+    Self: RawType,
+{
+    #[inline]
+    fn base(&self) -> T {
+        unsafe { T::from_raw(self.as_raw().cast()) }
+    }
+}

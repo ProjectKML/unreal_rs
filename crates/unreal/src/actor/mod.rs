@@ -4,7 +4,7 @@ use crate::{
     bindings,
     ecs::prelude::*,
     ffi,
-    object::{Class, HasClass, RawType},
+    object::{Class, HasClass, Object, RawType, Subclass},
 };
 
 #[derive(Debug, Component)]
@@ -55,3 +55,5 @@ impl HasClass for Actor {
 
 unsafe impl Send for Actor {}
 unsafe impl Sync for Actor {}
+
+unsafe impl Subclass<Object> for Actor {}
