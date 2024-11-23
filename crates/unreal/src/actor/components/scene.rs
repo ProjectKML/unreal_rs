@@ -1,7 +1,6 @@
 use crate::{
-    bindings,
-    components::PrimitiveComponent,
-    ffi,
+    actor::components::PrimitiveComponent,
+    bindings, ffi,
     object::{Class, HasClass, RawType, Subclass},
 };
 

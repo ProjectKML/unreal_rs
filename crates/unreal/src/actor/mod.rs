@@ -4,6 +4,7 @@ use crate::{
     bindings,
     ecs::prelude::*,
     ffi,
+    math::DVec3,
     object::{Class, HasClass, Object, RawType, Subclass},
 };
 
@@ -57,3 +58,13 @@ unsafe impl Send for Actor {}
 unsafe impl Sync for Actor {}
 
 unsafe impl Subclass<Object> for Actor {}
+
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ActorSpawnParams {
+    pub location: Option<DVec3>,
+    pub rotator: Option<DVec3>,
+}
+
+pub trait ActorSpawnCallback: FnOnce(&mut Actor) + Send + Sync + 'static {}
+
+impl<T: FnOnce(&mut Actor) + Send + Sync + 'static> ActorSpawnCallback for T {}

@@ -1,6 +1,6 @@
-mod spawn_actor;
+mod actor;
 mod uworld;
 
+pub use actor::*;
 pub use bevy_ecs::*;
-pub use spawn_actor::*;
 pub(crate) use uworld::*;

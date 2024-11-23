@@ -6,7 +6,7 @@ use crate::bindings;
 struct UnrealLogger;
 
 impl Log for UnrealLogger {
-    fn enabled(&self, metadata: &Metadata) -> bool {
+    fn enabled(&self, _metadata: &Metadata) -> bool {
         true
     }
 
