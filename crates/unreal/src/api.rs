@@ -1,11 +1,11 @@
 use std::ptr;
 
 use crate::{
-    actor::Actor,
+    actor::{Actor, ActorCommands},
     bindings,
     ecs::{
         bundle::Bundle,
-        system::{Commands, EntityCommands, Query, ResMut, Resource, SystemParam},
+        system::{Commands, Query, ResMut, Resource, SystemParam},
     },
     ffi,
     math::DVec3,
@@ -30,7 +30,7 @@ impl<'w, 's> UnrealApi<'w, 's> {
         bundle: impl Bundle,
         location: &DVec3,
         rotation: &DVec3,
-    ) -> (Actor, EntityCommands) {
+    ) -> ActorCommands {
         let entity = self.commands.spawn(bundle);
 
         let actor = Actor(unsafe {
@@ -43,14 +43,10 @@ impl<'w, 's> UnrealApi<'w, 's> {
             )
         });
 
-        (actor, entity)
+        ActorCommands { actor, entity }
     }
 
-    pub fn spawn_empty_actor(
-        &mut self,
-        location: &DVec3,
-        rotation: &DVec3,
-    ) -> (Actor, EntityCommands) {
+    pub fn spawn_empty_actor(&mut self, location: &DVec3, rotation: &DVec3) -> ActorCommands {
         let entity = self.commands.spawn_empty();
 
         let actor = Actor(unsafe {
@@ -63,6 +59,6 @@ impl<'w, 's> UnrealApi<'w, 's> {
             )
         });
 
-        (actor, entity)
+        ActorCommands { actor, entity }
     }
 }

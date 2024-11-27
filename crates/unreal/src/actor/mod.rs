@@ -1,14 +1,16 @@
+mod commands;
 pub mod components;
+
+pub use commands::*;
 
 use crate::{
     bindings,
     ecs::prelude::*,
     ffi,
-    math::DVec3,
     object::{Class, HasClass, Object, RawType, Subclass},
 };
 
-#[derive(Debug, Component)]
+#[derive(Clone, Debug, Component)]
 pub struct Actor(pub(crate) *mut ffi::AActor);
 
 impl Actor {
