@@ -13,7 +13,7 @@ FRustPluginModule* FRustPluginModule::TryGet() {
 }
 
 bool FRustPluginModule::TryLoadDynamic() {
-	const auto LocalTargetPath = FPaths::Combine("C:/Users/Lorenz Klaus/Documents/Projects/ue5_rs/target/debug/unreal_example.dll");
+	const auto LocalTargetPath = FPaths::Combine("C:/Users/Marlon/Documents/ProjectKML/unreal_rs/target/debug/unreal_example.dll");
 
 	auto* LocalHandle = FPlatformProcess::GetDllHandle(*LocalTargetPath);
 	if (LocalHandle == nullptr) {

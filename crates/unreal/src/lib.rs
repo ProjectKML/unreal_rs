@@ -1,6 +1,7 @@
 extern crate alloc;
 
 pub mod actor;
+mod api;
 pub mod bindings;
 pub mod ecs;
 pub mod hierarchy;
@@ -13,6 +14,7 @@ pub mod object;
 mod plugin;
 pub mod prelude;
 
+pub use api::*;
 pub use init::*;
 pub use main_schedule::*;
 pub use module::*;

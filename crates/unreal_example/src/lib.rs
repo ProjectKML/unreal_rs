@@ -1,15 +1,13 @@
-use unreal::{actor::ActorSpawnParams, ecs::ActorCommands, object::Subclass, prelude::*};
+use unreal::{math::DVec3, prelude::*};
 
-fn setup(mut commands: Commands) {
+fn setup(mut api: UnrealApi) {
     unreal::log::warn!("//setup");
 
-    commands.spawn_empty_actor(ActorSpawnParams::default(), |actor| {
-        actor.set_label("my_first_rust_actor");
-    });
+    let (mut actor, _) = api.spawn_empty_actor(&DVec3::ZERO, &DVec3::ZERO);
+    actor.set_label("my_first_actor");
 
-    commands.spawn_empty_actor(ActorSpawnParams::default(), |actor| {
-        actor.set_label("my_second_rust_actor");
-    });
+    let (mut actor, _) = api.spawn_empty_actor(&DVec3::ZERO, &DVec3::ZERO);
+    actor.set_label("my_second_actor");
 }
 
 fn update() {
