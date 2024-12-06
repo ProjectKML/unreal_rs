@@ -1,9 +1,0 @@
-[package]
-name = "unreal_ffi"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-
-[build-dependencies]
-cbindgen = "0.27.0"
