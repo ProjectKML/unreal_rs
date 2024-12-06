@@ -7,7 +7,6 @@ fn main() {
         .unwrap()
         .parent()
         .unwrap()
-        .join("RustPlugin")
         .join("Source")
         .join("RustPlugin")
         .join("Public");
