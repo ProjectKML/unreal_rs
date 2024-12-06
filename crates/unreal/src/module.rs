@@ -18,14 +18,12 @@ pub struct Module {
 
 impl Module {
     #[inline]
-    pub(crate) unsafe fn init(build: impl BuildModule) {
+    pub unsafe fn init(build: impl BuildModule) {
         let mut module = Self::default();
         module.world.insert_resource(Schedules::default());
         build.build(&mut module);
 
-        unsafe {
-            *MODULE = MaybeUninit::new(module);
-        }
+        MODULE = MaybeUninit::new(module);
     }
 
     pub fn insert_resource<R: Resource>(&mut self, resource: R) -> &mut Self {
