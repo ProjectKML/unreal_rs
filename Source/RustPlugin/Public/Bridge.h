@@ -7,7 +7,7 @@ extern "C" {
 #endif
     DEFINE_HANDLE(AActor);
 
-
+    void ur_log(const char* s, size_t len);
 #ifdef __cplusplus
 }
 #endif
