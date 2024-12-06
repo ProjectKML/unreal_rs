@@ -1,8 +1,8 @@
 .idea/
+Binaries/
 Cargo.lock
 crates/unreal/gen/
-RustPlugin/Binaries
-RustPlugin/Intermediate
+Intermediate/
 target/
 
 *.lnk
