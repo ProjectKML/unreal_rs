@@ -7,8 +7,6 @@ fn main() {
         .unwrap()
         .parent()
         .unwrap()
-        .join("Source")
-        .join("RustPlugin")
         .join("Public");
 
     let bridge_h = include_dir.join("Bridge.h");
