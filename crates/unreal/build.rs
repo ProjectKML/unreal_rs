@@ -7,7 +7,7 @@ fn main() {
         .unwrap()
         .parent()
         .unwrap()
-        .join("Public");
+        .join("Source");
 
     let bridge_h = include_dir.join("Bridge.h");
 
