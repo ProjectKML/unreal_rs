@@ -34,10 +34,12 @@ extern "C" {
     }
 
     //UClass
-    UR_Property* ur_class_find_property_by_name(UR_Class* self, const char* name_ptr, const size_t name_len) {
+
+    //UStruct
+    UR_Property* ur_struct_find_property_by_name(UR_Struct* self, const char* name_ptr, const size_t name_len) {
         FName name(name_len, UTF8_TO_TCHAR(name_ptr));
 
-        return reinterpret_cast<UR_Property*>(reinterpret_cast<UClass*>(self)->FindPropertyByName(name));
+        return reinterpret_cast<UR_Property*>(reinterpret_cast<UStruct*>(self)->FindPropertyByName(name));
     }
 #ifdef __cplusplus
 }

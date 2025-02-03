@@ -7,6 +7,7 @@ DEFINE_HANDLE(Class);
 DEFINE_HANDLE(FloatProperty);
 DEFINE_HANDLE(IntProperty);
 DEFINE_HANDLE(Property);
+DEFINE_HANDLE(Struct);
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +29,9 @@ extern "C" {
     void ur_int_property_set_value_in_container(UR_IntProperty* self, void* out_container, int32_t in_value);
 
     //UClass
-    UR_Property* ur_class_find_property_by_name(UR_Class* self, const char* name_ptr, const size_t name_len);
+
+    //UStruct
+    UR_Property* ur_struct_find_property_by_name(UR_Struct* self, const char* name_ptr, const size_t name_len);
 #ifdef __cplusplus
 }
 #endif
