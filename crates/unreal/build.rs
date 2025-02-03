@@ -16,6 +16,7 @@ fn main() {
     bindgen::Builder::default()
         .header(bridge_h.to_str().unwrap())
         .layout_tests(false)
+        .allowlist_function("ur_.*")
         .generate()
         .expect("Failed to generate bindings")
         .write_to_file("gen/bindings.rs")
