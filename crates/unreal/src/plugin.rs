@@ -22,7 +22,7 @@ mod sealed {
 
     impl<P: Plugin> Plugins<PluginMarker> for P {
         #[track_caller]
-        fn add_to_module(self, module: &mut Module) {
+        fn add_to_module(self, _module: &mut Module) {
             todo!()
         }
     }
